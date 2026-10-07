@@ -38,7 +38,7 @@ Supported automatic setup: Linux x86_64 with Bash, curl, tar, Python 3, and Dock
 ./scripts/start.sh
 ```
 
-`setup.sh` reuses an available Java compiler and Maven, otherwise downloads Temurin JDK 21 and Maven 3.9.11 into `.tools/`. It also prepares Tomcat 10.1.60 for optional native deployment. It generates unique database passwords only when `.env` does not already exist. The first Maven build and Docker image pulls require internet access. Services bind to loopback: website `20007`, MySQL `3307`.
+`setup.sh` reuses an available Java compiler and Maven, otherwise downloads Temurin JDK 21 and Maven 3.9.11 into `.tools/`. It also prepares Tomcat 10.1.60 for optional native deployment. It generates unique database passwords only when `.env` does not already exist. The first Maven build and Docker image pulls require internet access. Services bind to loopback: website `20007`, MySQL `20008`.
 
 ## Database and configuration
 
@@ -165,4 +165,4 @@ Passwords use BCrypt; hashes and email addresses are omitted from public profile
 
 This is a local college practical application. Active runs last only for the current 30-minute idle session and do not survive a Tomcat restart. Completed results persist in MySQL. Native Tomcat uses a simple connection per DAO operation; there is no connection pool. Public hosting would need HTTPS with Secure cookies, deployment-specific secrets, backups, and authentication rate limiting. Daily challenges, achievements, admin management and difficulty modes are optional future work. Node.js is used only for browser tests/formatting; it is not an application server.
 
-Troubleshooting: `docker compose logs web db`; native Tomcat logs are under `.tools/tomcat/logs/`. If port 20007/3307 is occupied, change the Compose binding and test URL/JDBC host URL together. Do not delete the database volume to resolve a startup problem.
+Troubleshooting: `docker compose logs web db`; native Tomcat logs are under `.tools/tomcat/logs/`. If port 20007/20008 is occupied, change the Compose binding and test URL/JDBC host URL together. Do not delete the database volume to resolve a startup problem.

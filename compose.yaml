@@ -4,7 +4,7 @@ services:
     container_name: college-survival-mysql
     restart: unless-stopped
     ports:
-      - "127.0.0.1:3307:3306"
+      - "127.0.0.1:20008:3306"
     environment:
       MYSQL_DATABASE: college_survival
       MYSQL_USER: ${DB_USERNAME:-college_app}
