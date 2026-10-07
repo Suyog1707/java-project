@@ -1,0 +1,50 @@
+services:
+  db:
+    image: mysql:8.4
+    container_name: college-survival-mysql
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3307:3306"
+    environment:
+      MYSQL_DATABASE: college_survival
+      MYSQL_USER: ${DB_USERNAME:-college_app}
+      MYSQL_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD in .env}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Set MYSQL_ROOT_PASSWORD in .env}
+    volumes:
+      - college-survival-data:/var/lib/mysql
+      - ./database:/docker-entrypoint-initdb.d:ro,Z
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+  web:
+    image: tomcat:10.1.60-jdk21-temurin
+    container_name: college-survival-tomcat
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:20007:8080"
+    environment:
+      DB_URL: "jdbc:mysql://db:3306/college_survival?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&connectTimeout=5000&socketTimeout=10000"
+      DB_USERNAME: ${DB_USERNAME:-college_app}
+      DB_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD in .env}
+      GAME_LENGTH: ${GAME_LENGTH:-10}
+      INITIAL_HEALTH: ${INITIAL_HEALTH:-100}
+      INITIAL_STRESS: ${INITIAL_STRESS:-10}
+      INITIAL_ATTENDANCE: ${INITIAL_ATTENDANCE:-80}
+      INITIAL_MONEY: ${INITIAL_MONEY:-1000}
+      INITIAL_KNOWLEDGE: ${INITIAL_KNOWLEDGE:-40}
+      INITIAL_SOCIAL: ${INITIAL_SOCIAL:-50}
+      CATALINA_OPTS: "-Duser.timezone=UTC"
+    volumes:
+      - ./target/college-survival.war:/usr/local/tomcat/webapps/college-survival.war:ro,Z
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "bash", "-c", "exec 3<>/dev/tcp/127.0.0.1/8080"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+volumes:
+  college-survival-data:

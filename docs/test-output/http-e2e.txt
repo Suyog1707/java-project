@@ -1,0 +1,22 @@
+PASS E2E-05 protected page + API
+PASS E2E-01 registration and BCrypt in MySQL
+PASS E2E-02 duplicate username and email
+PASS E2E-04 invalid login
+PASS E2E-03 login, session rotation and dashboard
+PASS malformed inputs, request limit and CSRF
+PASS missing active run rejected
+PASS E2E-06 initial server game state
+PASS E2E-13 refresh preserves run
+PASS E2E-08 invalid choice leaves state unchanged
+PASS scenario API hides effect rules
+PASS E2E-07 effects, score, progress and replay rejection
+PASS E2E-09 full completion + exact MySQL score/title/stats + no duplicates
+PASS E2E-10 private history, pagination and profile
+PASS E2E-11 public leaderboard ordered and private data excluded
+PASS history and profile restricted to current player
+PASS quit saves once and clears active run
+PASS real early failure persists
+PASS E2E-12 logout invalidates session
+PASS E2E-14 protected pages after logout, no-store cache
+PASS E2E-15 stale and invalid sessions rejected
+All HTTP/database end-to-end checks passed.

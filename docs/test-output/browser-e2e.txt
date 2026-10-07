@@ -1,0 +1,17 @@
+
+> test:e2e
+> node scripts/browser-e2e.mjs
+
+PASS landing desktop + mobile layout
+PASS protected page redirects
+PASS browser registration
+PASS invalid login feedback
+PASS login and dashboard
+PASS refresh keeps scenario
+PASS 10 choices, outcomes, result + exact MySQL score/title
+PASS history
+PASS leaderboard
+PASS profile
+PASS logout and back navigation protection
+PASS no JavaScript exceptions or server errors
+All browser end-to-end checks passed. Screenshots: docs/screenshots/

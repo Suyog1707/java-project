@@ -1,0 +1,11 @@
+{
+  "name": "college-survival-browser-tests",
+  "private": true,
+  "scripts": {
+    "test:e2e": "node scripts/browser-e2e.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.55.1",
+    "prettier": "^3.6.2"
+  }
+}

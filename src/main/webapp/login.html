@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#14131d" />
+    <title>Login · College Survival Simulator</title>
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <script src="js/app.js" defer></script>
+  </head>
+  <body data-page="login">
+    <header class="nav">
+      <a class="brand" href="index.html"
+        ><span class="brand-mark">CS</span
+        ><span>COLLEGE<br /><b>SURVIVAL SIMULATOR</b></span></a
+      >
+      <nav aria-label="Main navigation">
+        <a href="leaderboard.html">Leaderboard ↗</a
+        ><a href="history.html" class="private" hidden>My runs</a
+        ><a href="profile.html" class="private" hidden>Profile</a
+        ><a class="nav-login" href="login.html">Log in</a
+        ><button class="logout ghost private" hidden>Log out</button>
+      </nav>
+    </header>
+    <main id="main">
+      <section class="auth-layout">
+        <div>
+          <div class="eyebrow">YOUR SEMESTER MISSED YOU. PROBABLY.</div>
+          <h1>Back for<br /><span class="lime">round two?</span></h1>
+          <p>
+            Your scores, questionable decisions, and campus reputation are right
+            where you left them.
+          </p>
+          <div class="auth-quote">
+            Sleep. Study. Survive.<br />Pick any two.
+          </div>
+        </div>
+        <section class="panel auth-panel">
+          <span class="tag">PLAYER LOGIN</span>
+          <h2>Welcome back</h2>
+          <form id="login-form">
+            <label
+              >Username<input
+                name="username"
+                autocomplete="username"
+                required
+                placeholder="Your player name" /></label
+            ><label
+              >Password<input
+                name="password"
+                type="password"
+                autocomplete="current-password"
+                required
+                placeholder="Your secret survival strategy"
+            /></label>
+            <p class="form-error" role="alert"></p>
+            <button class="primary" type="submit">ENTER CAMPUS ↗</button>
+          </form>
+          <p class="muted">
+            New around here? <a href="register.html">Create a player</a>
+          </p>
+        </section>
+      </section>
+    </main>
+    <footer>
+      <span>COLLEGE SURVIVAL SIMULATOR</span
+      ><span>Made for questionable decisions. © 2026</span>
+    </footer>
+    <div id="toast" role="status" aria-live="polite" hidden></div>
+  </body>
+</html>

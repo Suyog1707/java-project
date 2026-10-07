@@ -1,0 +1,6 @@
+ Container college-survival-mysql Starting 
+ Container college-survival-mysql Started 
+ Container college-survival-mysql Waiting 
+ Container college-survival-mysql Healthy 
+PASS database outage returns friendly 503 without internal error details
+PASS database recovery restores normal API response

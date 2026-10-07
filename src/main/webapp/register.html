@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#14131d" />
+    <title>Register · College Survival Simulator</title>
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <script src="js/app.js" defer></script>
+  </head>
+  <body data-page="register">
+    <header class="nav">
+      <a class="brand" href="index.html"
+        ><span class="brand-mark">CS</span
+        ><span>COLLEGE<br /><b>SURVIVAL SIMULATOR</b></span></a
+      >
+      <nav aria-label="Main navigation">
+        <a href="leaderboard.html">Leaderboard ↗</a
+        ><a href="history.html" class="private" hidden>My runs</a
+        ><a href="profile.html" class="private" hidden>Profile</a
+        ><a class="nav-login" href="login.html">Log in</a
+        ><button class="logout ghost private" hidden>Log out</button>
+      </nav>
+    </header>
+    <main id="main">
+      <section class="auth-layout">
+        <div>
+          <div class="eyebrow">FRESHER OR VETERAN. EVERYONE STRUGGLES.</div>
+          <h1>Your chaos.<br /><span class="lime">Your story.</span></h1>
+          <p>
+            Build your player profile. Survive the semester. Give the
+            leaderboard something to talk about.
+          </p>
+          <div class="auth-quote">
+            “I came for the degree.<br />I stayed because attendance is
+            compulsory.”
+          </div>
+        </div>
+        <section class="panel auth-panel">
+          <span class="tag">PLAYER REGISTRATION</span>
+          <h2>Join the campus</h2>
+          <form id="register-form">
+            <label
+              >Full name<input
+                name="name"
+                autocomplete="name"
+                required
+                maxlength="100"
+                placeholder="What should we call you?" /></label
+            ><label
+              >Username<input
+                name="username"
+                autocomplete="username"
+                required
+                minlength="3"
+                maxlength="50"
+                pattern="[a-zA-Z0-9_]{3,50}"
+                placeholder="Your leaderboard identity" /></label
+            ><label
+              >Email<input
+                name="email"
+                type="email"
+                autocomplete="email"
+                required
+                maxlength="150"
+                placeholder="you@example.com"
+            /></label>
+            <div class="form-row">
+              <label
+                >Password<input
+                  name="password"
+                  type="password"
+                  autocomplete="new-password"
+                  required
+                  minlength="8"
+                  placeholder="8+ characters" /></label
+              ><label
+                >Confirm password<input
+                  name="confirmPassword"
+                  type="password"
+                  autocomplete="new-password"
+                  required
+                  minlength="8"
+                  placeholder="Once more"
+              /></label>
+            </div>
+            <p class="form-error" role="alert"></p>
+            <button class="primary" type="submit">CREATE PLAYER ↗</button>
+          </form>
+          <p class="muted">Already enrolled? <a href="login.html">Log in</a></p>
+        </section>
+      </section>
+    </main>
+    <footer>
+      <span>COLLEGE SURVIVAL SIMULATOR</span
+      ><span>Made for questionable decisions. © 2026</span>
+    </footer>
+    <div id="toast" role="status" aria-live="polite" hidden></div>
+  </body>
+</html>

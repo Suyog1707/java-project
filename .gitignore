@@ -1,0 +1,9 @@
+target/
+.tools/
+.runtime/
+.env
+node_modules/
+playwright-report/
+test-results/
+__pycache__/
+*.log

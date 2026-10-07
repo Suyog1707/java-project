@@ -1,0 +1,25 @@
+SET NAMES utf8mb4;
+CREATE DATABASE IF NOT EXISTS college_survival CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE college_survival;
+CREATE TABLE IF NOT EXISTS users (
+ id BIGINT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(100) NOT NULL, username VARCHAR(50) NOT NULL UNIQUE,
+ email VARCHAR(150) NOT NULL UNIQUE, password_hash VARCHAR(255) NOT NULL, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE IF NOT EXISTS scenarios (
+ id BIGINT PRIMARY KEY AUTO_INCREMENT, category VARCHAR(50) NOT NULL, title VARCHAR(150) NOT NULL,
+ description TEXT NOT NULL, is_active BOOLEAN NOT NULL DEFAULT TRUE, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE IF NOT EXISTS scenario_options (
+ id BIGINT PRIMARY KEY AUTO_INCREMENT, scenario_id BIGINT NOT NULL, option_text VARCHAR(255) NOT NULL,
+ health_change INT DEFAULT 0, stress_change INT DEFAULT 0, attendance_change INT DEFAULT 0,
+ money_change INT DEFAULT 0, knowledge_change INT DEFAULT 0, social_change INT DEFAULT 0, score_change INT DEFAULT 0,
+ outcome_text TEXT NOT NULL, FOREIGN KEY(scenario_id) REFERENCES scenarios(id) ON DELETE CASCADE
+);
+CREATE TABLE IF NOT EXISTS game_results (
+ id BIGINT PRIMARY KEY AUTO_INCREMENT, run_id CHAR(36) NOT NULL UNIQUE, user_id BIGINT NOT NULL, score INT NOT NULL,
+ result_title VARCHAR(100) NOT NULL, status VARCHAR(30) NOT NULL,
+ health INT NOT NULL, stress INT NOT NULL, attendance INT NOT NULL, money INT NOT NULL, knowledge INT NOT NULL,
+ social INT NOT NULL, scenarios_completed INT NOT NULL, started_at TIMESTAMP NULL,
+ completed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE,
+ INDEX idx_score(score DESC), INDEX idx_user_date(user_id,completed_at DESC)
+);
